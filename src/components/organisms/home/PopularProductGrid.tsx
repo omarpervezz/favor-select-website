@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Section from "@/components/atoms/Section";
 import MaxWidthWrapper from "@/components/layout/MaxWidthWrapper";
@@ -12,7 +13,7 @@ import { ProductT } from "@/types/real.product";
 import PopularProductCard from "@/components/molecules/product/PopularProductCard";
 
 type TopProductListProps = {
-  products: ProductT[];
+  products: ProductT[] | any[];
   banners: Banner[];
 };
 
