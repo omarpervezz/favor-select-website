@@ -1,105 +1,113 @@
-import { getBannerUrl } from "@/utils/getApirUrl";
-import { handleError } from "@/utils/handleResponseError";
-import { Banner, BannerResponse } from "@/types/banner";
+// import { getBannerUrl } from "@/utils/getApirUrl";
+// import { handleError } from "@/utils/handleResponseError";
+// import { Banner, BannerResponse } from "@/types/banner";
 
-export const getHeroBanners = async (): Promise<Banner[]> => {
-  const url = getBannerUrl("homepage-banners");
+// export const getHeroBanners = async (): Promise<Banner[]> => {
+//   const url = getBannerUrl("homepage-banners");
 
-  try {
-    const response = await fetch(url, {
-      next: { revalidate: 60 },
-    });
+//   try {
+//     const response = await fetch(url, {
+//       next: { revalidate: 60 },
+//     });
 
-    if (!response.ok) {
-      throw await handleError(response);
-    }
+//     if (!response.ok) {
+//       throw await handleError(response);
+//     }
 
-    const responseData = (await response.json()) as BannerResponse;
+//     const responseData = (await response.json()) as BannerResponse;
 
-    return responseData.banners;
-  } catch (error: unknown) {
-    console.error("Failed to fetch banners:", error);
-    throw new Error(`An error occurred while fetching banners: ${error}`);
-  }
-};
+//     return responseData.banners;
+//   } catch (error: unknown) {
+//     console.error("Failed to fetch banners:", error);
+//     throw new Error(`An error occurred while fetching banners: ${error}`);
+//   }
+// };
 
-export const getWeeklyBanners = async (): Promise<Banner[]> => {
-  const url = getBannerUrl("weekly-banners");
+// export const getWeeklyBanners = async (): Promise<Banner[]> => {
+//   const url = getBannerUrl("weekly-banners");
 
-  try {
-    const response = await fetch(url, {
-      next: { revalidate: 60 },
-    });
+//   try {
+//     const response = await fetch(url, {
+//       next: { revalidate: 60 },
+//     });
 
-    if (!response.ok) {
-      throw await handleError(response);
-    }
+//     if (!response.ok) {
+//       throw await handleError(response);
+//     }
 
-    const responseData = (await response.json()) as BannerResponse;
+//     const responseData = (await response.json()) as BannerResponse;
 
-    return responseData.banners;
-  } catch (error: unknown) {
-    console.error("Failed to fetch banners:", error);
-    throw new Error(`An error occurred while fetching banners: ${error}`);
-  }
-};
+//     return responseData.banners;
+//   } catch (error: unknown) {
+//     console.error("Failed to fetch banners:", error);
+//     throw new Error(`An error occurred while fetching banners: ${error}`);
+//   }
+// };
 
-export const getPopularBanners = async (): Promise<Banner[]> => {
-  const url = getBannerUrl("popular-banners");
-  try {
-    const response = await fetch(url, {
-      next: { revalidate: 60 },
-    });
+// export const getPopularBanners = async (): Promise<Banner[]> => {
+//   const url = getBannerUrl("popular-banners");
+//   try {
+//     const response = await fetch(url, {
+//       next: { revalidate: 60 },
+//     });
 
-    if (!response.ok) {
-      throw await handleError(response);
-    }
+//     if (!response.ok) {
+//       throw await handleError(response);
+//     }
 
-    const responseData = (await response.json()) as BannerResponse;
+//     const responseData = (await response.json()) as BannerResponse;
 
-    return responseData.banners;
-  } catch (error: unknown) {
-    console.error("Failed to fetch banners:", error);
-    throw new Error(`An error occurred while fetching banners: ${error}`);
-  }
-};
+//     return responseData.banners;
+//   } catch (error: unknown) {
+//     console.error("Failed to fetch banners:", error);
+//     throw new Error(`An error occurred while fetching banners: ${error}`);
+//   }
+// };
 
-export const getBrandBanners = async (): Promise<Banner[]> => {
-  const url = getBannerUrl("brands-banners");
-  try {
-    const response = await fetch(url, {
-      next: { revalidate: 60 },
-    });
+// export const getBrandBanners = async (): Promise<Banner[]> => {
+//   const url = getBannerUrl("brands-banners");
+//   try {
+//     const response = await fetch(url, {
+//       next: { revalidate: 60 },
+//     });
 
-    if (!response.ok) {
-      throw await handleError(response);
-    }
+//     if (!response.ok) {
+//       throw await handleError(response);
+//     }
 
-    const responseData = (await response.json()) as BannerResponse;
+//     const responseData = (await response.json()) as BannerResponse;
 
-    return responseData.banners;
-  } catch (error: unknown) {
-    console.error("Failed to fetch banners:", error);
-    throw new Error(`An error occurred while fetching banners: ${error}`);
-  }
-};
+//     return responseData.banners;
+//   } catch (error: unknown) {
+//     console.error("Failed to fetch banners:", error);
+//     throw new Error(`An error occurred while fetching banners: ${error}`);
+//   }
+// };
 
-export const getProductBanners = async (): Promise<Banner[]> => {
-  const url = getBannerUrl("products-banners");
-  try {
-    const response = await fetch(url, {
-      next: { revalidate: 60 },
-    });
+// export const getProductBanners = async (): Promise<Banner[]> => {
+//   const url = getBannerUrl("products-banners");
+//   try {
+//     const response = await fetch(url, {
+//       next: { revalidate: 60 },
+//     });
 
-    if (!response.ok) {
-      throw await handleError(response);
-    }
+//     if (!response.ok) {
+//       throw await handleError(response);
+//     }
 
-    const responseData = (await response.json()) as BannerResponse;
+//     const responseData = (await response.json()) as BannerResponse;
 
-    return responseData.banners;
-  } catch (error: unknown) {
-    console.error("Failed to fetch banners:", error);
-    throw new Error(`An error occurred while fetching banners: ${error}`);
-  }
-};
+//     return responseData.banners;
+//   } catch (error: unknown) {
+//     console.error("Failed to fetch banners:", error);
+//     throw new Error(`An error occurred while fetching banners: ${error}`);
+//   }
+// };
+
+import { fetchBannerByType } from "@/lib/api/bannerHelper";
+
+export const getHeroBanners = () => fetchBannerByType("homepage-banners");
+export const getWeeklyBanners = () => fetchBannerByType("weekly-banners");
+export const getPopularBanners = () => fetchBannerByType("popular-banners");
+export const getBrandBanners = () => fetchBannerByType("brands-banners");
+export const getProductBanners = () => fetchBannerByType("products-banners");
