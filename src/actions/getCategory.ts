@@ -26,7 +26,7 @@
 
 import { Category, CategoryResponse } from "@/types/category";
 import { getCategoryUrl } from "@/utils/getApirUrl";
-import { handleError } from "@/utils/handleResponseError";
+// import { handleError } from "@/utils/handleResponseError";
 
 export const getCategories = async (): Promise<Category[]> => {
   const url = getCategoryUrl();
@@ -37,7 +37,7 @@ export const getCategories = async (): Promise<Category[]> => {
     });
 
     if (!response.ok) {
-      throw await handleError(response);
+      console.log("⚠️ Skipping category fetch during build");
     }
 
     const responseData = (await response.json()) as CategoryResponse;

@@ -17,7 +17,12 @@ type TopProductListProps = {
 };
 
 const PopularProductGrid = ({ products, banners }: TopProductListProps) => {
-  const popularBanner = banners[0];
+  const hasProducts = products && products.length > 0;
+  const hasBanner = banners && banners.length > 0;
+  const popularBanner = hasBanner ? banners[0] : null;
+
+  // ✅ Return nothing if both are missing
+  if (!hasProducts && !hasBanner) return null;
 
   return (
     <Section>
@@ -35,21 +40,25 @@ const PopularProductGrid = ({ products, banners }: TopProductListProps) => {
           </div>
 
           <div className="flex gap-x-3">
-            <div className="hidden xl:block flex-1/5">
-              <Image
-                src={popularBanner.image}
-                alt={popularBanner.title}
-                className="w-full h-full object-cover rounded-2xl"
-                width={800}
-                height={800}
-              />
-            </div>
+            {hasBanner && (
+              <div className="hidden xl:block flex-1/5">
+                <Image
+                  src={popularBanner!.image}
+                  alt={popularBanner!.title}
+                  className="w-full h-full object-cover rounded-2xl"
+                  width={800}
+                  height={800}
+                />
+              </div>
+            )}
 
-            <div className="flex-1 xl:flex-4/5 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-              {products.map((product) => (
-                <PopularProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            {hasProducts && (
+              <div className="flex-1 xl:flex-4/5 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                {products.map((product) => (
+                  <PopularProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            )}
           </div>
         </ContainerBox>
       </MaxWidthWrapper>

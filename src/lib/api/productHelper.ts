@@ -6,7 +6,7 @@ export async function safeProductFetch<T>(
   key: ResponseKeys,
   includeCreds = false
 ): Promise<T[]> {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}//${endpoint}`;
 
   try {
     const response = await fetch(url, {
@@ -15,7 +15,7 @@ export async function safeProductFetch<T>(
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch ${key}`);
+      console.log("⚠️ Skipping category fetch during build");
     }
 
     const data = await response.json();

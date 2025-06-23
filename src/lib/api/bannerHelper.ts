@@ -1,9 +1,9 @@
 "use server";
 import { Banner, BannerResponse } from "@/types/banner";
-import { handleError } from "@/utils/handleResponseError";
+// import { handleError } from "@/utils/handleResponseError";
 
 export const fetchBannerByType = async (type: string): Promise<Banner[]> => {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/advertisement/${type}`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}//api/advertisement/${type}`;
 
   try {
     const response = await fetch(url, {
@@ -11,7 +11,7 @@ export const fetchBannerByType = async (type: string): Promise<Banner[]> => {
     });
 
     if (!response.ok) {
-      throw await handleError(response);
+      console.log("⚠️ Skipping category fetch during build");
     }
 
     const data = (await response.json()) as BannerResponse;

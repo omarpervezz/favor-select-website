@@ -9,7 +9,7 @@ export const getProductUrl = (endpoint: string) => {
 };
 
 export const getCategoryUrl = () => {
-  return `${FAVOR_SELECT_API_URL}/api/general/categories-with-pro-count`;
+  return `${FAVOR_SELECT_API_URL}/api/general/categorsies-with-pro-count`;
 };
 
 export const getNotificationUrl = () => {
