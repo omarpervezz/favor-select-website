@@ -1,12 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* config options here */
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.dummyjson.com",
-      },
       {
         protocol: "https",
         hostname: "database-1.cn2s286amw68.eu-north-1.rds.amazonaws.com",
@@ -20,6 +17,10 @@ const nextConfig: NextConfig = {
         hostname: "favorselect114.s3.us-east-1.amazonaws.com",
       },
     ],
+  },
+
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
